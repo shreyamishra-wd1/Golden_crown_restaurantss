@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Crown Restaurant</title>
+  <style>
+    body{
+      text-align: center;
+      font-family: "Arial", sans-serif;
+      font-size: 2rem;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top,#fff3e0,#ffe0b2);
+    }
+    header {
+      background:black;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 4rem;
+    }
+    nav {
+      background: orangered;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 0.5rem;
+    }
+    nav a{
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .section {
+      padding: 2rem;
+      text-align: center;
+    }
+    .menu-item {
+      background: #ffffff;
+      margin: 10px auto;
+      padding: 12px;
+      max-width: 600px;  /* for larger screens */
+      width: 90%;        /* adjusts for mobile */
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .menu-item:hover {
+      background: brown;
+      color: white;
+      transform: scale(1.02);
+    }
+    .arrow {
+      font-size: 18px;
+      color: red;
+      transition: transform 0.3s ease, color 0.2s ease;
+      display: inline-block;
+      line-height: 1;
+      margin-left: 8px;
+    }
+    .menu-item:hover .arrow {
+      color: white;
+    }
+    .rotate {
+      transform: rotate(180deg);
+    }
+    .sub-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease;
+      opacity: 0;
+      margin: 0 auto;
+      max-width: 580px;
+      width: 90%;
+      padding: 10px;
+    }
+    .sub-menu.open {
+      opacity: 1;
+      max-height: 500px;
+      margin-top: 10px;
+    }
+    .sub-menu div {
+      background: #fff8e7;
+      margin: 5px auto;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .sub-menu div:hover{
+      background: brown;
+      color: white;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    /* ✅ RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      body { font-size: 1.8rem; }
+      header { font-size: 3rem; }
+      nav { gap: 2rem; font-size: 2rem; }
+    }
+    @media (max-width: 768px) {
+      body { font-size: 1.5rem; }
+      header { font-size: 2rem; padding: 0.5rem; }
+      nav { flex-direction: column; gap: 1rem; font-size: 1.5rem; }
+      .menu-item { font-size: 1rem; padding: 10px; }
+      .sub-menu div { font-size: 1rem; }
+    }
+    @media (max-width: 480px) {
+      body { font-size: 1.2rem; }
+      header { font-size: 1.8rem; }
+      .menu-item { font-size: 0.9rem; }
+      .sub-menu div { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header><b> Welcome to Golden Crown Restaurant👑</b></header>
+
+  <nav style="font-size: 3rem;">
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="section" id="home" style="font-size: 1.5rem;">
+    <h2>It's Food o'clock😉</h2>
+    <i><p><b>Where every bite is a crown worth delight!👑✨</b></p>
+      <p><b>Golden Flavors, Royal Taste!👑🍔😋</b></p>
+      <p style="color:green;"><b>Pure Veg</b></p>
+      <b><p>Time:10AM-9PM ,"We are Open All Days".<br>Home🏠Delivery🚚is also Available.</p></b>
+    </i>
+  </div>
+
+  <!-- Menu Items -->
+  <div class="section" id="menu" style="font-size: 1.5rem;">
+    <h2>Our Menu</h2>
+
+    <!-- (KEEPING YOUR MENU ITEMS SAME AS YOU WROTE) -->
+    <div class="menu-item">Chhola Chawal : ₹60</div><br>
+    <div class="menu-item">🍲🫓Chhola Pudi : ₹60(5pcs.)</div><br>
+    <div class="menu-item">🫓Aloo Parathe : ₹40(1pcs.)</div><br>
+    <div class="menu-item">🫓Paneer Parathe : ₹60(1pcs.)</div><br>
+    <div class="menu-item">🍲Manchow Soup : ₹50(full)</div><br>
+
+    <!-- Example Dropdown Menu -->
+    <div class="menu-item" onclick="toggleMenu('momoList', this)">
+      🥟 Momos <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="momoList">
+      <div>🥟 Veg Momos : ₹40(Half)   ₹80(Full)</div>
+      <div>🥟 Chilli Momos : ₹60(Half)   ₹110(Full)</div>
+      <div>🥟 Manchurian Momos : ₹60(Half)   ₹110(Full)</div>
+      <div>🥟 Fried Momos : ₹60(Half)   ₹110(Full)</div>
+      <div>🥟 Magic Masala Momos : ₹60(Half)   ₹120(Full)</div>
+      <div>🥟 Dragon Momos : ₹70(Half)   ₹130(Full)</div>
+    </div>
+     <div class="menu-item" onclick="toggleMenu('chowList', this)">
+    🍜 Chowmein <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="chowList">
+    <div>🍜 Veg Chowmein : ₹60(Half)   ₹100(Full)</div>
+    <div>🍜 Hakka Chowmein : ₹60(Half)   ₹100(Full)</div>
+    <div>🍜 Singapur Chowmein : ₹60(Half)   ₹100(Full)</div>
+    <div>🍜 Paneer Chowmein : ₹70(Half)   ₹130(Full)</div>
+    <div>🍜 Hot Garlic Chowmein : ₹70(Half)   ₹130(Full)</div>
+    <div>🍜 Mashroom Chowmein : ₹70(Half)   ₹130(Full)</div>
+    <div>🍜 Special Chowmein : ₹80(Half)   ₹150(Full)</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('friesList', this)">
+    🍟 French Fries <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="friesList">
+    <div>🌯 Spring Rolls : ₹40</div>
+    <div>🍟 Finger Chips: ₹50</div><br>
+    <div>🍯🌶️🥔Honey Chilli Potato : ₹70</div>
+    <div>🌶️🥔Chilli Potato : ₹70</div><br>
+    <div>Paneer Chilli : ₹90(Half)    ₹180(full)</div>
+    <div>Mashroom Chilli : ₹70(Half)    ₹130(full)</div><br>
+    <div>Veg Manchurian : ₹60(Half)    ₹110(full)</div>
+    <div>Paneer Manchurian : ₹90(Half)    ₹180(full)</div>
+    <div>Mashroom Manchurian : ₹70(Half)    ₹130(full)</div>
+    <div>Paneer Pakoda : ₹190 10Pcs.</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('burgerList', this)">
+    🍔 Burger <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="burgerList">
+    <div>🍔Veg Burger : ₹50</div>
+    <div>🍔Paneer Burger : ₹60</div>
+    <div>🍔Fry Burger : ₹60</div>
+    <div>🍔🧀Paneer Cheese Burger : ₹70</div>
+
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('riceList', this)">
+     🍚 Rice <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="riceList">
+    <div>🍚Veg Fried Rice : ₹120</div>
+    <div>🍚Singapur Fried Rice : ₹120</div>
+    <div>🍚Paneer Fried Rice : ₹150</div>
+    <div>🍚Mashroom Fried Rice : ₹160</div>
+    <div>🍚Special Fried Rice : ₹120</div>
+    </div>
+ 
+    <div class="menu-item" onclick="toggleMenu('southList', this)">
+    🥥 South Indian <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="southList">
+    <div>🍲🫓Chhole Bhature : ₹70</div>
+    <div>🍞🍲Paav Bhaji : ₹60</div>
+    <div>🥥Sambhar-Idli : ₹60</div>
+    <div>🥥Plain Dosa : ₹70</div>    
+    <div>🥥Masala Dosa - ₹90</div>
+    <div>🥥Rava Masala Dosa : ₹100</div>  
+    <div>🥥Onion Dosa : ₹120</div>  
+    <div>🥥Onion Masala Dosa : ₹130</div>  
+    <div>🥥Rava Paneer Dosa : ₹140</div>    
+    <div>🥥Paneer Dosa : ₹140</div>
+    <div>🥥Special Dosa : ₹180</div>
+    <div>🥥Uttapam Mix : ₹70</div>
+    <div>🥥Onion Uttapam  : ₹80</div>
+    <div>🥥Paneer Mix Uttapam  : ₹80</div><br>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('pizzaList', this)">
+    🍕 Pizza <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="pizzaList">
+    <div>Veg Pizza🍕 : 140 </div>
+    <div>Mashroom Pizza🍕 : ₹140</div>
+    <div> Corn Pizza🍕: ₹150</div>
+    <div> Paneer Pizza🍕 : ₹150</div>
+    <div> Cheese Pizza🧀🍕 : ₹150</div>
+    <div> Chilli Paneer Pizza🍕 : ₹170</div>
+    <div>GoldenCrown Special Pizza🍕 : ₹200</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('sandwichList', this)">
+    🥪 Sandwich <span class="arrow" style="color: red;">⬇️</span>
+    </div>
+    <div class="sub-menu" id="sandwichList">
+    <div>🥪Veg  GrilledSandwich  : ₹60</div>
+    <div>🥪Paneer Grilled Sandwich : ₹70</div>
+    <div>🥪Special Sandwich : ₹90</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('maggiList', this)">
+    🍜 Maggi <span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="maggiList">
+    <div>🍜 Plain Maggi : ₹30</div>
+    <div>🥗🍜 Veg Maggi : ₹40</div>
+    <div>🧀🍜 Cheese Maggi : ₹60</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('Drinks', this)">
+    Drinks🥤<span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="Drinks">
+    <div>☕Coffee : ₹20</div>
+    <div>🥤Sprite : ₹20</div>
+    <div>🥤Thums Up : ₹20</div>
+    <div>🥤Coca-Cola : ₹20</div>
+    <div>🥤Maaza : ₹20</div>
+    <div>🥤Limca : ₹20</div>
+    </div>
+
+    <div class="menu-item" onclick="toggleMenu('combos', this)">
+     Combos🥳🎉<span class="arrow">⬇️</span>
+    </div>
+    <div class="sub-menu" id="combos">
+    <div>🍔🍟🥤Veg Burger,finger Chips with Cold drink : ₹100</div>
+    <div>🍲🫓🥤Choole Bhature With Cold Drink :₹80 </div>
+    </div>
+
+
+    <!-- KEEP REST OF YOUR MENU SAME -->
+    <!-- I am not removing or editing your content -->
+    <!-- Just added responsiveness above -->
+    
+    <script>
+      function toggleMenu(id, element) {
+        let menu = document.getElementById(id);
+        let arrow = element.querySelector(".arrow");
+        if (menu.classList.contains("open")) {
+          menu.classList.remove("open");
+          arrow.classList.remove("rotate");
+        } else {
+          menu.classList.add("open");
+          arrow.classList.add("rotate");
+        }
+      }
+    </script>
+
+  </div>
+
+  <div class="section" id="about" style="font-size: 1.5rem;">
+    <h2>About Us</h2>
+    <i><p>Welcome to 👑 Golden Crown,Where We serve freshly cooked meals with love and joy 😄🥤.Your happiness is our recipe ,come and enjoy a royal dining experience!🤗 </p>
+    <p>✨🎉👑 Golden Crown is your go-to place for delicious meals😋 and happy moments!</p>
+    <p>🍕🍔 We bring flavors that make you smile 😄 and moments you’ll remember 🫠🎉.</p>
+    <p>Fresh ingredients🥗, royal taste😋, and a joyful 🤗dining experience🤌 that’s our promise!✨</p></i>
+  </div>
+
+  <div class="section" id="contact" style="font-size: 2rem;">
+    <h2>Contact Us</h2>
+    <b><p>&#x1F4CD;Sultanpur Road,Kadipur </p>
+    <p>📞+919582360586 , +918826541065</p></b>
+  </div>
+</body>
+</html>
